@@ -9,8 +9,18 @@
     // Your JavaScript goes here!
     console.log("Hello, World!")
     
-    function computerTurn{
-      let computerTurn
+    function getComputerChoice() {
+      computerNum = Math.floor(Math.random() * (3 - 1 + 1) + 1);
+      let computerSelection
+      if (computerNum < 2) {
+        computerSelection = "Rock";
+      } else if (computerNum < 3) {
+        computerSelection = "Paper" 
+      } else {
+        computerSelection = "Scissors"
+      }
+      console.log(computerNum)
+      return computerSelection
     }
 
   </script>
