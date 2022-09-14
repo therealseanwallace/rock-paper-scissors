@@ -1,4 +1,30 @@
 console.log("Hello, World!")
+
+
+const line1 = "The year is 1988. The machines have destroyed human civilization."
+const line2 = "Only a handful of humans survive. But the machines have offered a reprieve."
+const line3 = "If YOU can beat their best AI in a game of rock, paper, scissors, they will allow the last humans to live."
+const line4 = "No hard feelings."
+
+setTimeout(function() { text(line1, ".typewriter1") }, 3000);
+setTimeout(function() { text(line2), ".typewriter2" }, 6000);
+setTimeout(function() { text(line3), ".typewriter3" }, 9000);
+setTimeout(function() { text(line4), ".typewriter4" }, 15000);
+
+function text(texts, newClass) {
+  const textBox = document.querySelector('.text-box');
+  const newLine = document.createElement("p");
+  newLine.classList.add('typewriter', newClass)
+  newLine.textContent = texts;
+  newLine.style.color = "red";
+  textBox.append(newLine);
+}
+
+function textFade() {
+  const select = document.querySelector('.typewriter');
+  
+}
+
 let userWins = 0;
 let computerWins = 0;
 let drawCount = 0;
@@ -78,3 +104,6 @@ function game() {
   console.log("Final score is Player - ", userWins, "| Computer - ", computerWins);
   return("Game over.");
 }
+
+
+
