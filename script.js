@@ -78,19 +78,3 @@ function game() {
   console.log("Final score is Player - ", userWins, "| Computer - ", computerWins);
   return("Game over.");
 }
-
-setTimeout(function(){
-  document.getElementById("rock-img-container").className = "";
- }, 1500);
-
- setTimeout(function(){
-  document.getElementById("paper-img-container").className = "";
- }, 3500);
-
- setTimeout(function(){
-  document.getElementById("scis-img-container").className = "";
- }, 5500);
-
- setTimeout(function(){
-  document.getElementById("cont-btn-container").className = "";
- }, 7500);

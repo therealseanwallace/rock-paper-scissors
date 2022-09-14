@@ -21,21 +21,21 @@ img {
 }
 
 #rock-img-container {
-  margin-bottom: -40px;
-  transition: fadeIn;
-  
+  margin-bottom: -40px;  
+  animation-delay: 1;
 }
 
 #paper-img-container {
-  
+  animation-delay: 2.5s;
 }
 
 #scis-img-container {
-  
+  animation-delay: 4s;
 }
 
 #cont-btn-container {
   margin-top: 50px;
+  animation-delay: 5.5s;
 }
 
 #cont-btn {
@@ -59,15 +59,14 @@ img {
   filter: drop-shadow(0 0 20px #db3eb1) contrast(2) brightness(2);
 }
 
-.dnone {
-  display: none;
-}
-
 .fadein {
-  animation: fadeIn 5s;
+  opacity: 0;
+  animation: fadeIn 2s forwards; 
+  
 }
 
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
+
