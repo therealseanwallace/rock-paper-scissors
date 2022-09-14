@@ -1,6 +1,7 @@
-1. Storyboard/wireframe the UX
-2. Create SVGs of the neon images and lettering
+
+2. Storyboard/wireframe the UX
 3. Source CSS for neon lettering
 4. Write pseudocode for functionality/layout
 5. Code HTML/CSS
 6. Code JS.
+1. Create SVGs of the neon images and lettering
