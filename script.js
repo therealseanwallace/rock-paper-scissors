@@ -1,18 +1,22 @@
 console.log("Hello, World!")
 
-let addTextCounter = 0;
+let showItemsCounter = 0;
+let rpsCounter = 0;
+const globalInterval = 200;
 
-setInterval(function() {
-  if (loops === 7) {
-    return;
-  } else {
+myInterval = setInterval(function() {
+  let imgName;
+  if (showItemsCounter < 7) {
     showText();
-    console.log(number);
-    addTextCounter ++;
-    
+    showItemsCounter ++;
+    console.log(showItemsCounter);}
+  else {
+    console.log("Now I should break the loop")
+    showButtons();
+    clearInterval(myInterval);
   }
 
-}, 3000)
+}, globalInterval)
 
 function showText() {
   const selectParas = document.getElementsByClassName("hidden");
@@ -22,16 +26,45 @@ function showText() {
   
 }
 
-
-
-function newButton(img) {
-  const selectArea = document.querySelector("#game-area");
-  const newButt = document.createElement("img");+
-  newButt.classList.add("option", "fadein");
-  const imgSrc = `./${img}.png`;
-  newButt.src = imgSrc;
-  selectArea.append(newButt);
+function showButtons() {
+  console.log("Show buttons activated")
+  let rpsCounter = 0;
+  const selectAreaOne = document.querySelector("#game-area");
+  const buttonDiv = document.createElement("div");
+  buttonDiv.setAttribute("id","button-div")
+  selectAreaOne.append(buttonDiv);
+  
+  const newButtonInterval = setInterval(function(){
+    const selectAreaTwo = document.querySelector("#button-div");
+    if (rpsCounter === 0) {
+      createImg("rock");
+      rpsCounter ++;
+      console.log("I should show button 1")
+    } else if (rpsCounter === 1) {
+      createImg("paper");
+      rpsCounter ++;
+      console.log("I should show button 2")
+    } else {
+      createImg("scis");
+      console.log("I should show button 3")
+      clearInterval(newButtonInterval);
+    }
+    
+  }, globalInterval)
+  
 }
+
+
+
+function createImg(img) {
+  let image = document.createElement('img');
+  const imgSrc = `./${img}.png`;
+  image.src = imgSrc;
+  image.classList.add("option", "hidden", "fadein")
+  document.querySelector('#game-area').appendChild(image);
+}
+
+
 
 let userWins = 0;
 let computerWins = 0;
