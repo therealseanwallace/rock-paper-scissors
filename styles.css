@@ -16,50 +16,54 @@ body {
 
 }
 
-img {
+.intro-img {
   max-height: 27vh;
 }
 
 #rock-img-container {
   margin-bottom: -40px;  
-  animation-delay: 1;
+  animation-delay: 0.5;
 }
 
 #paper-img-container {
-  animation-delay: 2.5s;
+  animation-delay: 1.5s;
 }
 
 #scis-img-container {
-  animation-delay: 4s;
+  animation-delay: 2.5s;
 }
 
 #cont-btn-container {
   margin-top: 50px;
-  animation-delay: 5.5s;
+  animation-delay: 3.5s;
 }
 
 #p1 {
-  animation-delay: 0.75;
+  animation-delay: 0.5;
 }
 
 #p2 {
-  animation-delay: 3.25s;
+  animation-delay: 2s;
 }
 
 #p3 {
-  animation-delay: 6.25s;
+  animation-delay: 3.5s;
 }
 
 #p4 {
-  animation-delay: 9.25s;
+  animation-delay: 5s;
 }
 
 #p5 {
-  animation-delay: 12.25s;
+  animation-delay: 6.5s;
 }
 
 #p6 {
-  animation-delay: 15.25s;
+  animation-delay: 8s;
+}
+
+#p7 {
+  animation-delay: 10s;
 }
 
 #cont-btn {
@@ -126,20 +130,74 @@ img {
 	color: #db3eb1;
   letter-spacing: 5px;
   font-weight: bold;
-  filter: drop-shadow(0 0 10px #db3eb1) drop-shadow(0 0 40px #db3eb1) contrast(2) brightness(2);  
-}
+  filter: drop-shadow(0 0 10px #db3eb1) drop-shadow(0 0 40px #db3eb1) contrast(2) brightness(2);
+  border:#db3eb1;
+  border-radius: 5px;
+  border-style: solid;
+} 
 
-
-
-
-
-
-
-#container {
+#game-container {
   
   display: flex;
   justify-content: center;
   text-align: center;
-  
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#option1 {
+  color: #f51616;
+  border: 6px solid #f51616;
+  border-radius: 15px;
+  padding: 15px 25px;
+  font-size: 30px;
+  letter-spacing: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  filter: drop-shadow(0 0 15px #f51616) drop-shadow(0 0 50px #f51616) contrast(2) brightness(2);
+  transition: .5s;
+  min-width: 15vw;
+}
+
+#option2 {
+  color: #46fc14;
+  border: 6px solid #46fc14;
+  border-radius: 15px;
+  padding: 15px 25px;
+  font-size: 30px;
+  letter-spacing: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  filter: drop-shadow(0 0 15px #46fc14) drop-shadow(0 0 50px #46fc14) contrast(2) brightness(2);
+  transition: .5s;
+  min-width: 15vw;
+}
+
+#option3 {
+  color: #39e0e0;
+  border: 6px solid #39e0e0;
+  border-radius: 15px;
+  padding: 15px 25px;
+  font-size: 30px;
+  letter-spacing: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  filter: drop-shadow(0 0 15px #39e0e0) drop-shadow(0 0 50px #39e0e0) contrast(2) brightness(2);
+  transition: .5s;
+  min-width: 15vw;
+}
+
+#game-area {
+  display: flex;
   
 }
+
+.option {
+  width: 20vw;
+  height: auto;
+}
+
