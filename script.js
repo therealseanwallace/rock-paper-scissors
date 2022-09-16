@@ -1,33 +1,31 @@
 console.log("Hello, World!")
 
-setTimeout(function() {
-  const selectArea = document.querySelector('#game-area');
-  const rock = document.createElement("img");
-  const paper = document.createElement("img");
-  const scis = document.createElement("img");
-  rock.classList.add("option", "fadein");
-  paper.classList.add("option", "fadein");
-  scis.classList.add("option", "fadein");
-  rock.src = '/rock.png';
-  paper.src = '/paper.png';
-  scis.src = '/scis.png';
-  setTimeout(function() {
-    selectArea.append(rock);  
-  }, 1);
+let addTextCounter = 0;
 
-  setTimeout(function() {
-    selectArea.append(paper);  
-  }, 1000);
+setInterval(function() {
+  if (loops === 7) {
+    return;
+  } else {
+    showText();
+    console.log(number);
+    addTextCounter ++;
+    
+  }
 
-  setTimeout(function() {
-    selectArea.append(scis);  
-  }, 2000);
+}, 3000)
+
+function showText() {
+  const selectParas = document.getElementsByClassName("hidden");
+  const item = selectParas[0];
+  item.classList.remove("hidden");
+  item.classList.add("fadein");
+  
+}
 
 
-)
 
 function newButton(img) {
-  const = selectArea = document.querySelector("#game-area");
+  const selectArea = document.querySelector("#game-area");
   const newButt = document.createElement("img");+
   newButt.classList.add("option", "fadein");
   const imgSrc = `./${img}.png`;

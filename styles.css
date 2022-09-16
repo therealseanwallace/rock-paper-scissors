@@ -20,51 +20,7 @@ body {
   max-height: 27vh;
 }
 
-#rock-img-container {
-  margin-bottom: -40px;  
-  animation-delay: 0.5;
-}
 
-#paper-img-container {
-  animation-delay: 1.5s;
-}
-
-#scis-img-container {
-  animation-delay: 2.5s;
-}
-
-#cont-btn-container {
-  margin-top: 50px;
-  animation-delay: 3.5s;
-}
-
-#p1 {
-  animation-delay: 0.5;
-}
-
-#p2 {
-  animation-delay: 2s;
-}
-
-#p3 {
-  animation-delay: 3.5s;
-}
-
-#p4 {
-  animation-delay: 5s;
-}
-
-#p5 {
-  animation-delay: 6.5s;
-}
-
-#p6 {
-  animation-delay: 8s;
-}
-
-#p7 {
-  animation-delay: 10s;
-}
 
 #cont-btn {
   color: #db3eb1;
@@ -89,9 +45,13 @@ body {
 }
 
 .fadein {
-  opacity: 0;
+  
   animation: fadeIn 2s forwards; 
   
+}
+
+.hidden {
+  opacity: 0;
 }
 
 .fadeout {
