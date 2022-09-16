@@ -5,7 +5,8 @@ html {
 body {
   max-width: 960px;
   margin: auto;
-  height: 100vh;
+  height: 1080px;
+  overflow: hidden;
 }
 
 
@@ -51,6 +52,7 @@ body {
   font-weight: bold;
   filter: drop-shadow(0 0 10px #db3eb1) drop-shadow(0 0 40px #db3eb1) contrast(2) brightness(2);
   text-align: center;
+  height: 700px;
 } 
 
 #game-container {
@@ -74,6 +76,7 @@ body {
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: center;
+  height: 20%;
 }
 
 @media only screen and (min-width: 700px) {

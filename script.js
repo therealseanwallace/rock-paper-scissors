@@ -1,7 +1,9 @@
+//layout and elements//
+
 console.log("Hello, World!")
 
 let showItemsCounter = 0;
-const globalInterval = 1000;
+const globalInterval = 200;
 
 showItems = setInterval(function() {
   if (showItemsCounter < 7) {
@@ -64,14 +66,22 @@ function showButtons() {
 
 
 function createImg(img) {
-  let image = document.createElement('img');
+  let input = document.createElement('input');
+  input.setAttribute('type', 'image');
   const imgSrc = `./${img}.png`;
-  image.src = imgSrc;
-  image.classList.add("option", "fadein")
-  document.querySelector('#button-div').appendChild(image);
+  input.setAttribute('src', imgSrc);
+  input.classList.add("option", "fadein")
+  document.querySelector('#button-div').appendChild(input);
 }
 
+function alertFunction() {
+  alert("YAY! YOU DID IT!");
+}
 
+const btn = document.querySelectorAll('.option');
+btn.addEventListener('click', alertFunction);
+
+//game logic//
 
 let userWins = 0;
 let computerWins = 0;
@@ -145,13 +155,14 @@ function playRound() {
   }
 }
 
-function game() {
+/*function game() {
   for (let i = 0; i < 5; i++) {
     playRound();
   }
   console.log("Final score is Player - ", userWins, "| Computer - ", computerWins);
   return("Game over.");
 }
+*/
 
 
 
