@@ -161,3 +161,6 @@ body {
   height: auto;
 }
 
+.noshow {
+  display: none;
+}

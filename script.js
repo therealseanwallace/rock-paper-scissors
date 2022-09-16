@@ -4,16 +4,18 @@ let showItemsCounter = 0;
 let rpsCounter = 0;
 const globalInterval = 200;
 
-myInterval = setInterval(function() {
+showItems = setInterval(function() {
   let imgName;
   if (showItemsCounter < 7) {
     showText();
     showItemsCounter ++;
     console.log(showItemsCounter);}
   else {
-    console.log("Now I should break the loop")
+    console.log("Now I should break the loop");
+    hideText();
+    
     showButtons();
-    clearInterval(myInterval);
+    clearInterval(showItems);
   }
 
 }, globalInterval)
@@ -24,6 +26,28 @@ function showText() {
   item.classList.remove("hidden");
   item.classList.add("fadein");
   
+}
+
+function hideText() {
+  let hideTextCounter = 0;
+  const selectParas = document.getElementsByClassName("paragraph");
+  
+  
+  const thisInterval = setInterval(function(){
+    const item = selectParas[0];
+    console.log(typeof(item));
+    if (typeof item == "undefined") {
+      clearInterval(thisInterval);
+    } else {
+      item.classList.add("noshow");
+      item.classList.remove("paragraph");
+      hideTextCounter ++;
+    }
+  
+    
+  }, globalInterval
+  )
+    
 }
 
 function showButtons() {
