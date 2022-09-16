@@ -1,20 +1,17 @@
 console.log("Hello, World!")
 
 let showItemsCounter = 0;
-let rpsCounter = 0;
-const globalInterval = 200;
+const globalInterval = 1000;
 
 showItems = setInterval(function() {
-  let imgName;
   if (showItemsCounter < 7) {
     showText();
     showItemsCounter ++;
     console.log(showItemsCounter);}
   else {
     console.log("Now I should break the loop");
-    hideText();
     
-    showButtons();
+    setTimeout(showButtons, globalInterval);
     clearInterval(showItems);
   }
 
@@ -25,35 +22,21 @@ function showText() {
   const item = selectParas[0];
   item.classList.remove("hidden");
   item.classList.add("fadein");
-  
 }
 
 function hideText() {
-  let hideTextCounter = 0;
-  const selectParas = document.getElementsByClassName("paragraph");
-  
-  
-  const thisInterval = setInterval(function(){
-    const item = selectParas[0];
-    console.log(typeof(item));
-    if (typeof item == "undefined") {
-      clearInterval(thisInterval);
-    } else {
-      item.classList.add("noshow");
-      item.classList.remove("paragraph");
-      hideTextCounter ++;
-    }
-  
-    
-  }, globalInterval
-  )
-    
+  console.log("hideText triggered");
+  const selectParas = document.getElementsByClassName("paragraph");  
+  item = selectParas[0];
+  item.classList.add("hidden");
+  item.classList.remove("paragraph");
+  return;
 }
 
 function showButtons() {
   console.log("Show buttons activated")
   let rpsCounter = 0;
-  const selectAreaOne = document.querySelector("#game-area");
+  const selectAreaOne = document.querySelector("#container");
   const buttonDiv = document.createElement("div");
   buttonDiv.setAttribute("id","button-div")
   selectAreaOne.append(buttonDiv);
@@ -74,7 +57,7 @@ function showButtons() {
       clearInterval(newButtonInterval);
     }
     
-  }, globalInterval)
+  }, 700)
   
 }
 
@@ -84,8 +67,8 @@ function createImg(img) {
   let image = document.createElement('img');
   const imgSrc = `./${img}.png`;
   image.src = imgSrc;
-  image.classList.add("option", "hidden", "fadein")
-  document.querySelector('#game-area').appendChild(image);
+  image.classList.add("option", "fadein")
+  document.querySelector('#button-div').appendChild(image);
 }
 
 
