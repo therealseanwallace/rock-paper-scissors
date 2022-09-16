@@ -1,7 +1,7 @@
-
-2. Storyboard/wireframe the UX
-3. Source CSS for neon lettering
-4. Write pseudocode for functionality/layout
-5. Code HTML/CSS
-6. Code JS.
-1. Create SVGs of the neon images and lettering
+Write event listeners for buttons
+Connect it up to the existing logic
+Upon choice, hide text
+Display the choices followed by the outcome with a short delay
+Update score
+Prompt for a new choice
+Change to the video game font

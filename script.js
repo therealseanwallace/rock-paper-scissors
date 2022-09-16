@@ -1,5 +1,40 @@
 console.log("Hello, World!")
 
+setTimeout(function() {
+  const selectArea = document.querySelector('#game-area');
+  const rock = document.createElement("img");
+  const paper = document.createElement("img");
+  const scis = document.createElement("img");
+  rock.classList.add("option", "fadein");
+  paper.classList.add("option", "fadein");
+  scis.classList.add("option", "fadein");
+  rock.src = '/rock.png';
+  paper.src = '/paper.png';
+  scis.src = '/scis.png';
+  setTimeout(function() {
+    selectArea.append(rock);  
+  }, 1);
+
+  setTimeout(function() {
+    selectArea.append(paper);  
+  }, 1000);
+
+  setTimeout(function() {
+    selectArea.append(scis);  
+  }, 2000);
+
+
+)
+
+function newButton(img) {
+  const = selectArea = document.querySelector("#game-area");
+  const newButt = document.createElement("img");+
+  newButt.classList.add("option", "fadein");
+  const imgSrc = `./${img}.png`;
+  newButt.src = imgSrc;
+  selectArea.append(newButt);
+}
+
 let userWins = 0;
 let computerWins = 0;
 let drawCount = 0;
