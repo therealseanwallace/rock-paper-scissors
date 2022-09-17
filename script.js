@@ -28,15 +28,6 @@ function showText() {
   item.classList.add("fadein");
 }
 
-function hideText() {
-  console.log("hideText triggered");
-  const selectParas = document.getElementsByClassName("paragraph");  
-  item = selectParas[0];
-  item.classList.add("hidden");
-  item.classList.remove("paragraph");
-  return;
-}
-
 function showButtons() {
   console.log("Show buttons activated")
   let rpsCounter = 0;
@@ -59,49 +50,84 @@ function showButtons() {
       createBtn("scis");
       console.log("I should show button 3")
       clearInterval(newButtonInterval);
+      
     }
     
+    
   }, 700)
-  
 }
 
+setTimeout(clearText, globalInterval * 30);
+
 function clearText() {
-  console.log("clearText activated!");
+  
+  console.log("clearText() activated!");
   const hideText = document.querySelectorAll("p.paragraph");
   console.log(hideText[0]);
-  for (let i = 0; i < 7; i++) {
+  
+  for (let i = 0; i < 6; i++) {
     hideText[i].classList.remove("fadein");
     hideText[i].classList.add("fadeout");
     setTimeout(function() {
     hideText[i].classList.add("hidden");
-    }, 2000)
+    hideText[i].remove();
+    }, 1000)
   } 
+}
+
+function hideScore() {
+  console.log("hide score activated!");
+  const texts = document.querySelectorAll(".result");
+  texts.forEach(text => {
+    text.classList.add("fadeout");
+    text.remove();
+  })
+
 }
 
 function createBtn(img) {
   imgCounter ++;
   console.log(imgCounter);
-  let input = document.createElement('input');
+  const input = document.createElement('input');
   input.setAttribute('type', 'image');
   const imgSrc = `./${img}.png`;
   input.setAttribute('src', imgSrc);
   input.classList.add("option", "fadein")
   document.querySelector('#button-div').appendChild(input);
   input.setAttribute('id', `img${imgCounter}`);
+  let clickCounter = 0;
   input.addEventListener('click', () => {
-    
-    playRound(input.id);
-    console.log(input.id);
-    clearText();
-
-  }); 
+    clickCounter ++;
+    console.log(clickCounter);
+    playRound();
+  })
 }
+
+function checkWinner() {
+  const titlesDiv = document.querySelector("#titles");
+  const winner = document.createElement('p');
+  if (userWins === 5) { 
+    hideScore();
+    winner.textContent = "CONGRATULATIONS! You win. Humanity is saved!";
+    titlesDiv.append(winner);
+  } else if (computerWins === 5) {
+    hideScore();
+    winner.textContent = "OH NOES! The machines' champion has won. Humanity will be destroyed :(";
+    titlesDiv.append(winner);
+  }
+}
+
 
 function showResult(result, score) {
   console.log("showResult activated!");
-  titlesDiv = document.querySelector("#titles");
-  titlesDiv.append(result);
-  titlesDiv.append(score);
+  const titlesDiv = document.querySelector("#titles");
+  const newResult = document.createElement('p');
+  newResult.textContent = result + score;
+  newResult.classList.add("result");
+  newResult.setAttribute('id', 'oldResult');
+  titlesDiv.append(newResult);
+  checkWinner();
+  
 }
 
 //game logic//
@@ -109,6 +135,7 @@ function showResult(result, score) {
 let userWins = 0;
 let computerWins = 0;
 let drawCount = 0;
+let roundCounter = 0;
 function getComputerChoice() {
   let computerNum;
   let computerSelection; 
@@ -134,7 +161,12 @@ function getUserChoice() {
 }
 
 function playRound(id) {
-  
+  if (roundCounter > 0) {
+    hideScore();
+  }
+  roundCounter ++;
+  console.log("This is round", roundCounter);
+  console.log("Playing a round!");
   if (id === img1) {
     userChoice = "rock";
     
@@ -146,46 +178,50 @@ function playRound(id) {
   
   cpuChoice = getComputerChoice();
   if (userChoice === cpuChoice) {
-    console.log("This round is a draw!");
     console.log("Round completed!")
+    const string = "This round is a draw! ";
+    const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
+    showResult(string, score); 
     return;
   }
   
   roundString = userChoice + cpuChoice;
   if (roundString === "rockpaper") {
+    
     computerWins ++;
-    const string = "Paper beats rock! Computer wins this round!";
+    const string = "Paper beats rock! Computer wins this round! ";
     const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
+    
     showResult(string, score); 
     return;
   } else if (roundString === "rockscissors") {
     userWins ++;
     const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
-    const string = "Rock beats scissors! Player wins this round!"
+    const string = "Rock beats scissors! Player wins this round! "
     showResult(string, score); 
     return;
   } else if (roundString === "paperrock") {
     userWins ++;
     const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
-    const string ="Paper beats rock! Player wins this round!"
+    const string ="Paper beats rock! Player wins this round! "
     showResult(string, score); 
     return;
   } else if (roundString === "paperscissors") {
     computerWins ++;
     const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
-    const string = "Scissors beats paper! Computer wins this round!";
+    const string = "Scissors beats paper! Computer wins this round! ";
     showResult(string, score); 
     return;
   } else if (roundString === "scissorsrock") {
     computerWins ++;
     const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
-    const string = "Rock beats scissors! Computer wins this round!";
+    const string = "Rock beats scissors! Computer wins this round! ";
     showResult(string, score); 
     return;
   } else if (roundString === "scissorspaper") {
     userWins ++;
     const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
-    const string = "Scissors beats paper! User wins this round!";
+    const string = "Scissors beats paper! User wins this round! ";
     showResult(string, score); 
     return;
   } else {
