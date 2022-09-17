@@ -5,6 +5,7 @@ console.log("Hello, World!")
 let showItemsCounter = 0;
 const globalInterval = 200;
 let imgCounter = 0;
+const titles = document.querySelector("#titles");
 
 showItems = setInterval(function() {
   if (showItemsCounter < 7) {
@@ -64,7 +65,18 @@ function showButtons() {
   
 }
 
-
+function clearText() {
+  console.log("clearText activated!");
+  const hideText = document.querySelectorAll("p.paragraph");
+  console.log(hideText[0]);
+  for (let i = 0; i < 7; i++) {
+    hideText[i].classList.remove("fadein");
+    hideText[i].classList.add("fadeout");
+    setTimeout(function() {
+    hideText[i].classList.add("hidden");
+    }, 2000)
+  } 
+}
 
 function createBtn(img) {
   imgCounter ++;
@@ -77,11 +89,20 @@ function createBtn(img) {
   document.querySelector('#button-div').appendChild(input);
   input.setAttribute('id', `img${imgCounter}`);
   input.addEventListener('click', () => {
-    alert(input.id);
-  });
-  
+    
+    playRound(input.id);
+    console.log(input.id);
+    clearText();
+
+  }); 
 }
 
+function showResult(result, score) {
+  console.log("showResult activated!");
+  titlesDiv = document.querySelector("#titles");
+  titlesDiv.append(result);
+  titlesDiv.append(score);
+}
 
 //game logic//
 
@@ -112,48 +133,66 @@ function getUserChoice() {
   return(userInput)
 }
 
-function playRound() {
-  userChoice = getUserChoice();
+function playRound(id) {
+  
+  if (id === img1) {
+    userChoice = "rock";
+    
+  } else if (id === img2) {
+    userChoice = "paper";
+  } else {
+    userChoice = "scissors";
+  }
+  
   cpuChoice = getComputerChoice();
   if (userChoice === cpuChoice) {
     console.log("This round is a draw!");
-    return ("Round completed!");
+    console.log("Round completed!")
+    return;
   }
   
   roundString = userChoice + cpuChoice;
   if (roundString === "rockpaper") {
     computerWins ++;
-    console.log("Score: Player - ", userWins, "| Computer - ", computerWins);
-    console.log("Paper beats rock! Computer wins this round!");
+    const string = "Paper beats rock! Computer wins this round!";
+    const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
+    showResult(string, score); 
     return;
   } else if (roundString === "rockscissors") {
     userWins ++;
-    console.log("Score: Player - ", userWins, "| Computer - ", computerWins);
-    console.log("Rock beats scissors! Player wins this round!");
+    const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
+    const string = "Rock beats scissors! Player wins this round!"
+    showResult(string, score); 
     return;
   } else if (roundString === "paperrock") {
     userWins ++;
-    console.log("Score: Player - ", userWins, "| Computer - ", computerWins);
-    console.log("Paper beats rock! Player wins this round!");
+    const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
+    const string ="Paper beats rock! Player wins this round!"
+    showResult(string, score); 
     return;
   } else if (roundString === "paperscissors") {
     computerWins ++;
-    console.log("Score: Player - ", userWins, "| Computer - ", computerWins);
-    console.log("Scissors beats paper! Computer wins this round!");
+    const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
+    const string = "Scissors beats paper! Computer wins this round!";
+    showResult(string, score); 
     return;
   } else if (roundString === "scissorsrock") {
     computerWins ++;
-    console.log("Score: Player - ", userWins, "| Computer - ", computerWins);
-    console.log("Rock beats scissors! Computer wins this round!");
+    const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
+    const string = "Rock beats scissors! Computer wins this round!";
+    showResult(string, score); 
     return;
   } else if (roundString === "scissorspaper") {
     userWins ++;
-    console.log("Score: Player - ", userWins, "| Computer - ", computerWins);
-    console.log("Scissors beats paper! User wins this round!");
+    const score = `Score: Player - ${userWins} | Computer - ${computerWins}`;
+    const string = "Scissors beats paper! User wins this round!";
+    showResult(string, score); 
     return;
   } else {
-    console.log("You have entered an invalid input. Please try again.");
+    
+    showResult(string, score); 
     return;
+    
   }
 }
 
