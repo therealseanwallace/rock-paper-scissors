@@ -4,6 +4,7 @@ console.log("Hello, World!")
 
 let showItemsCounter = 0;
 const globalInterval = 200;
+let imgCounter = 0;
 
 showItems = setInterval(function() {
   if (showItemsCounter < 7) {
@@ -46,15 +47,15 @@ function showButtons() {
   const newButtonInterval = setInterval(function(){
     const selectAreaTwo = document.querySelector("#button-div");
     if (rpsCounter === 0) {
-      createImg("rock");
+      createBtn("rock");
       rpsCounter ++;
       console.log("I should show button 1")
     } else if (rpsCounter === 1) {
-      createImg("paper");
+      createBtn("paper");
       rpsCounter ++;
       console.log("I should show button 2")
     } else {
-      createImg("scis");
+      createBtn("scis");
       console.log("I should show button 3")
       clearInterval(newButtonInterval);
     }
@@ -65,21 +66,22 @@ function showButtons() {
 
 
 
-function createImg(img) {
+function createBtn(img) {
+  imgCounter ++;
+  console.log(imgCounter);
   let input = document.createElement('input');
   input.setAttribute('type', 'image');
   const imgSrc = `./${img}.png`;
   input.setAttribute('src', imgSrc);
   input.classList.add("option", "fadein")
   document.querySelector('#button-div').appendChild(input);
+  input.setAttribute('id', `img${imgCounter}`);
+  input.addEventListener('click', () => {
+    alert(input.id);
+  });
+  
 }
 
-function alertFunction() {
-  alert("YAY! YOU DID IT!");
-}
-
-const btn = document.querySelectorAll('.option');
-btn.addEventListener('click', alertFunction);
 
 //game logic//
 
