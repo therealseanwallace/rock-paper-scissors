@@ -3,8 +3,8 @@
 console.log("Hello, World!")
 
 let showItemsCounter = 0;
-const globalInterval = 200;
-let imgCounter = 0;
+const globalInterval = 1000;
+let buttCounter = 0;
 const titles = document.querySelector("#titles");
 
 showItems = setInterval(function() {
@@ -39,25 +39,25 @@ function showButtons() {
   const newButtonInterval = setInterval(function(){
     const selectAreaTwo = document.querySelector("#button-div");
     if (rpsCounter === 0) {
-      createBtn("rock");
+      createButt("ROCK");
       rpsCounter ++;
       console.log("I should show button 1")
     } else if (rpsCounter === 1) {
-      createBtn("paper");
+      createButt("PAPER");
       rpsCounter ++;
       console.log("I should show button 2")
     } else {
-      createBtn("scis");
+      createButt("SCISSORS");
       console.log("I should show button 3")
       clearInterval(newButtonInterval);
       
     }
     
     
-  }, 700)
+  }, globalInterval)
 }
 
-setTimeout(clearText, globalInterval * 30);
+setTimeout(clearText, globalInterval * 10);
 
 function clearText() {
   
@@ -71,7 +71,7 @@ function clearText() {
     setTimeout(function() {
     hideText[i].classList.add("hidden");
     hideText[i].remove();
-    }, 1000)
+    }, globalInterval)
   } 
 }
 
@@ -85,16 +85,14 @@ function hideScore() {
 
 }
 
-function createBtn(img) {
-  imgCounter ++;
-  console.log(imgCounter);
-  const input = document.createElement('input');
-  input.setAttribute('type', 'image');
-  const imgSrc = `./${img}.png`;
-  input.setAttribute('src', imgSrc);
+function createButt(option) {
+  buttCounter ++;
+  console.log(buttCounter);
+  const input = document.createElement('p');
+  input.textContent = option;
   input.classList.add("option", "fadein")
   document.querySelector('#button-div').appendChild(input);
-  input.setAttribute('id', `img${imgCounter}`);
+  input.setAttribute('id', `butt${buttCounter}`);
   let clickCounter = 0;
   input.addEventListener('click', () => {
     clickCounter ++;
@@ -110,10 +108,12 @@ function checkWinner() {
     hideScore();
     winner.textContent = "CONGRATULATIONS! You win. Humanity is saved!";
     titlesDiv.append(winner);
+    
   } else if (computerWins === 5) {
     hideScore();
     winner.textContent = "OH NOES! The machines' champion has won. Humanity will be destroyed :(";
     titlesDiv.append(winner);
+    
   }
 }
 
@@ -167,10 +167,10 @@ function playRound(id) {
   roundCounter ++;
   console.log("This is round", roundCounter);
   console.log("Playing a round!");
-  if (id === img1) {
+  if (id === butt1) {
     userChoice = "rock";
     
-  } else if (id === img2) {
+  } else if (id === butt2) {
     userChoice = "paper";
   } else {
     userChoice = "scissors";
