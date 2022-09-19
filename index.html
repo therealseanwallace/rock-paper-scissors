@@ -1,98 +1,34 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Page Title</title>
-</head>
-<body>
-  <script>
-    // Your JavaScript goes here!
-    console.log("Hello, World!")
-    let userWins = 0;
-    let computerWins = 0;
-    let drawCount = 0;
-    
-
-    function getComputerChoice() {
-      let computerNum;
-      let computerSelection; 
-      computerNum = Math.floor(Math.random() * (3 - 1 + 1) + 1);
-      if (computerNum < 2) {
-        computerChoice = "rock";
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+      <div id="container">
         
-      } else if (computerNum < 3) {
-        computerChoice = "paper";
-      } else {
-        computerChoice = "scissors"
-      }
-      console.log("Computer chooses: " , computerChoice);
-      return(computerChoice);
-    }
-    
-    function getUserChoice() {
-      let userInput = window.prompt("Please enter rock, paper, or scissors.");
-      userInput = userInput.toLowerCase();
-      console.log(userInput);
-      console.log("Player chooses: " , userInput);
-      return(userInput)
-    }
 
-    function playRound() {
-      userChoice = getUserChoice();
-      cpuChoice = getComputerChoice();
-      if (userChoice === cpuChoice) {
-        console.log("This round is a draw!");
-        return ("Round completed!");
-      }
+        
+        <div id="titles">
+          
+
+          <p class="paragraph hidden" id="p1">The year is 1988.</p>
+          <p class="paragraph hidden" id="p2">The machines have destroyed human civilization.</p>
+          <p class="paragraph hidden" id="p3">Only a handful of humans survive.</p>
+          <p class="paragraph hidden" id="p4">But the machines have offered a reprieve.</p>
+          <p class="paragraph hidden" id="p5">If YOU can beat their best AI...</p>
+          <p class="paragraph hidden" id="p6">They will let the last humans live.</p>
+          <p class="paragraph hidden" id="p7">Choose carefully...</p>
+
+        </div>
+      </div> 
       
-      roundString = userChoice + cpuChoice;
-      if (roundString === "rockpaper") {
-        computerWins ++;
-        console.log("Score: Player - ", userWins, "| Computer - ", computerWins);
-        console.log("Paper beats rock! Computer wins this round!");
-        return;
-      } else if (roundString === "rockscissors") {
-        userWins ++;
-        console.log("Score: Player - ", userWins, "| Computer - ", computerWins);
-        console.log("Rock beats scissors! Player wins this round!");
-        return;
-      } else if (roundString === "paperrock") {
-        userWins ++;
-        console.log("Score: Player - ", userWins, "| Computer - ", computerWins);
-        console.log("Paper beats rock! Player wins this round!");
-        return;
-      } else if (roundString === "paperscissors") {
-        computerWins ++;
-        console.log("Score: Player - ", userWins, "| Computer - ", computerWins);
-        console.log("Scissors beats paper! Computer wins this round!");
-        return;
-      } else if (roundString === "scissorsrock") {
-        computerWins ++;
-        console.log("Score: Player - ", userWins, "| Computer - ", computerWins);
-        console.log("Rock beats scissors! Computer wins this round!");
-        return;
-      } else if (roundString === "scissorspaper") {
-        userWins ++;
-        console.log("Score: Player - ", userWins, "| Computer - ", computerWins);
-        console.log("Scissors beats paper! User wins this round!");
-        return;
-      } else {
-        console.log("You have entered an invalid input. Please try again.");
-        return;
-      }
-    }
-
-    function game() {
-      for (let i = 0; i < 5; i++) {
-        playRound();
-      }
-      console.log("Final score is Player - ", userWins, "| Computer - ", computerWins);
-      return("Game over.");
-    }
-    
-    
-
-    
-  </script>
-</body>
+    </main>
+  </body>
 </html>

@@ -1,0 +1,7 @@
+Write event listeners for buttons
+Connect it up to the existing logic
+Upon choice, hide text
+Display the choices followed by the outcome with a short delay
+Update score
+Prompt for a new choice
+Change to the video game font

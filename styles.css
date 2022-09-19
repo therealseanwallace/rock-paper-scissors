@@ -1,0 +1,113 @@
+html {
+  background: #141212;
+}
+
+body {
+  max-width: 960px;
+  margin: auto;
+  height: 1080px;
+  overflow: hidden;
+  font-family: "Press Start 2P", sans-serif;
+  color: #00b140;
+  letter-spacing: 5px;
+  font-weight: bold;
+  filter: drop-shadow(0 0 10px #00b140) drop-shadow(0 0 20px #00b140) contrast(2) brightness(1);
+  text-align: center;
+}
+
+
+.fadein {
+  
+  animation: fadeIn 2s forwards; 
+  
+}
+
+.hidden {
+  opacity: 0;
+  display: none; 
+}
+
+.fadeout {
+  opacity: 1;
+  animation: fadeOut 2s backwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.dontshow {
+  display: none;
+}
+
+#titles {
+	font-size: 20px;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  
+}
+	
+
+
+#game-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+
+.option {
+  min-width: 200px;
+  min-height: 50px;
+  border-style: solid;
+  border-width: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: -70px;
+  border-radius: 3px;
+}
+
+#button-div {
+  display: flex;
+  max-width: 960px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 80px;  
+}
+
+@media only screen and (min-width: 700px) {
+  #button-div {
+    flex-direction: row;
+    margin-right: 72px;
+  }
+
+}
+
+
+.option:hover {
+  background:#00b140;
+  color: #141212;
+}
